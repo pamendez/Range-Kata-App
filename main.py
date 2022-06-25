@@ -1,4 +1,3 @@
-from unicodedata import name
 from krange.krange import Range
 import os
 
@@ -8,9 +7,9 @@ def main():
     """
 
     print("Welcome to the application!")
-    input_range = input("Enter the range you want to work with: ")    
+    input_range1 = input("Enter the range you want to work with: ")    
     try:
-        primary_range = Range(input_range)
+        primary_range = Range(input_range1)
         while (True):
             os.system('cls') if (os.name == "nt") else os.system('clear')
             print(f"Current range is: {primary_range.to_string()}")
@@ -21,8 +20,10 @@ def main():
                   "\n4. EndPoints" +
                   "\n5. OverlapsRange" +
                   "\n6. Equals" +
-                  "\n7. Exit" +
+                  "\n7. Change Range" +
+                  "\n8. Exit" +
                   "\n\n>")
+            print("")
 
             if(option == '1'):
                 input_elements = [x.strip() for x in input("Insert the elements separated by commas: ").split(",")]
@@ -38,7 +39,7 @@ def main():
                 pass
 
             elif (option == '3'):
-                input_range2 = input("Insert the range to evaluate")
+                input_range2 = input("Insert the range to evaluate: ")
                 secondary_range = Range(input_range2)
                 result = primary_range.contains(secondary_range)
                 print(f"{result}")
@@ -50,12 +51,25 @@ def main():
                 pass
 
             elif (option == '5'):
+               input_range2 = input("Insert the Second Range: ")
+               secondary_range = Range(input_range2)
+               result = primary_range.overlapsRange(secondary_range)
+               print(f"{result}")
                pass
 
             elif (option == '6'):
-               pass
+                input_range2 = input("Insert the Second Range: ")
+                secondary_range = Range(input_range2)
+                result = primary_range.equals(secondary_range)
+                print(f"{result}")
+                pass
 
             elif (option == '7'):
+                input_range1 = input("Enter the new range you want to work with: ")
+                primary_range = Range(input_range1)
+                pass
+
+            elif (option == '8'):
                print("Exiting application...")
                break
 
