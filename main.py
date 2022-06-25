@@ -1,4 +1,6 @@
+from unicodedata import name
 from krange.krange import Range
+import os
 
 def main():
     """
@@ -8,43 +10,54 @@ def main():
     print("Welcome to the application!")
     input_range = input("Enter the range you want to work with: ")    
     try:
-        rng = Range(input_range)
+        primary_range = Range(input_range)
         while (True):
-            print("Select an operation: \n")
-            print("1. Contains integers \n",
-                  "2. GetAllPoints \n",
-                  "3. ContainsRange \n",
-                  "4. EndPoints \n",
-                  "5. OverlapsRange \n",
-                  "6. Equals \n", 
-                  "7. Exit \n"
-                   )
+            os.system('cls') if (os.name == "nt") else os.system('clear')
+            print(f"Current range is: {primary_range.to_string()}")
+            print("Select an operation:")
+            option = input("\n1. Contains integers" +
+                  "\n2. GetAllPoints" +
+                  "\n3. ContainsRange" +
+                  "\n4. EndPoints" +
+                  "\n5. OverlapsRange" +
+                  "\n6. Equals" +
+                  "\n7. Exit" +
+                  "\n\n>")
 
-            options = input("save") 
-            _response = []
+            if(option == '1'):
+                input_elements = [x.strip() for x in input("Insert the elements separated by commas: ").split(",")]
 
-            if(options == '1'):
-                print("Insert the elements separated by commas (,)")
-                _response = input()
-                rng.contains(_response)
-                break
-            elif (options == '2'):
+                result = primary_range.contains(set(input_elements))
+                print(f"{result}")
+                pass
+
+            elif (option == '2'):
                pass
-            elif (options == '3'):
+
+            elif (option == '3'):
                pass
-            elif (options == 4):
+
+            elif (option == '4'):
                pass
-            elif (options == 5):
+
+            elif (option == '5'):
                pass
-            elif (options == 6):
+
+            elif (option == '6'):
                pass
-            elif (options == 7):
-               pass
+
+            elif (option == '7'):
+               print("Exiting application...")
+               break
+
+
             else:
-                print("Invalid option")
-            break
+                input("Invalid option.")
             pass
+
+        input("Press ENTER to continue.")
         pass
+
     except (Exception, ValueError, SyntaxError, TypeError) as e:
         print(f"\nAn error has ocurred: {e}")
         pass
