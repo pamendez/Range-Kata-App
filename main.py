@@ -10,24 +10,27 @@ def main():
     try:
         rng = Range(input_range)
         while (True):
-            print("Select an operation:")
-            print("1. Contains integers",
-                  "2. GetAllPoints",
-                  "3. ContainsRange",
-                  "4. EndPoints",
-                  "5. OverlapsRange",
-                  "6. Equals", 
-                  "7. Exit",
-                   end= "")
-            options = input()
+            print("Select an operation: \n")
+            print("1. Contains integers \n",
+                  "2. GetAllPoints \n",
+                  "3. ContainsRange \n",
+                  "4. EndPoints \n",
+                  "5. OverlapsRange \n",
+                  "6. Equals \n", 
+                  "7. Exit \n"
+                   )
 
-            if(options == 1):
+            options = input("save") 
+            _response = []
+
+            if(options == '1'):
                 print("Insert the elements separated by commas (,)")
                 _response = input()
                 rng.contains(_response)
-            elif (options == 2):
+                break
+            elif (options == '2'):
                pass
-            elif (options == 3):
+            elif (options == '3'):
                pass
             elif (options == 4):
                pass
