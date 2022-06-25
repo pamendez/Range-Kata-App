@@ -32,13 +32,22 @@ def main():
                 pass
 
             elif (option == '2'):
-               pass
+
+                result = primary_range.getAllPoints()
+                print(f"{result}")
+                pass
 
             elif (option == '3'):
-               pass
+                input_range2 = input("Insert the range to evaluate")
+                secondary_range = Range(input_range2)
+                result = primary_range.contains(secondary_range)
+                print(f"{result}")
+                pass
 
             elif (option == '4'):
-               pass
+                result = primary_range.endpoints
+                print(f"{result}")
+                pass
 
             elif (option == '5'):
                pass
@@ -55,7 +64,7 @@ def main():
                 input("Invalid option.")
             pass
 
-        input("Press ENTER to continue.")
+            input("Press ENTER to continue.")
         pass
 
     except (Exception, ValueError, SyntaxError, TypeError) as e:
