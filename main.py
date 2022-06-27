@@ -9,25 +9,16 @@ def main():
 
     print("Welcome to the application!")
     input_range1 = None
+    change = True
     while (True):
         try:
-            input_range1 = input("Enter the primary range you want to work with: ")
-            break
+            if (change == True):
+                input_range1 = input("Enter the primary range you want to work with: ")
+                primary_range = Range(input_range1)
+                change = False
+                os.system('cls') if (os.name == "nt") else os.system('clear')
+                pass
 
-        except (Exception, ValueError, SyntaxError, TypeError) as e:
-            print(f"\nAn error has ocurred: {e}")
-            pass
-
-        finally:
-            input(f"Press ENTER to continue.")
-            os.system('cls') if (os.name == "nt") else os.system('clear')
-            pass
-        pass
-
-    while (True):
-        try:
-            primary_range = Range(input_range1)
-            os.system('cls') if (os.name == "nt") else os.system('clear')
             print(f"Current range is: {primary_range.to_string()}")
             print("Select an operation:")
             option = input("\n1. Contains integers" +
@@ -80,8 +71,7 @@ def main():
                 pass
 
             elif (option == '7'):
-                input_range1 = input("Enter the new range you want to work with: ")
-                primary_range = Range(input_range1)
+                change = True
                 pass
 
             elif (option == '8'):
@@ -96,8 +86,7 @@ def main():
 
         except (Exception, ValueError, SyntaxError, TypeError) as e:
             print(f"\nAn error has ocurred: {e}")
-            pass
-
+            continue
         finally:                        
             input("Press ENTER to continue.")
             pass
